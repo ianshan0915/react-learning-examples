@@ -1,0 +1,24 @@
+{
+  "name": "react-learning-examples",
+  "version": "1.0.0",
+  "description": "react learning examples for beginners",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ianshan0915/react-learning-examples.git"
+  },
+  "keywords": [
+    "react",
+    "beginners",
+    "examples"
+  ],
+  "author": "ianshan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ianshan0915/react-learning-examples/issues"
+  },
+  "homepage": "https://github.com/ianshan0915/react-learning-examples#readme"
+}
