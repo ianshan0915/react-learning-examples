@@ -5,7 +5,6 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js"
   },
-  mode: 'development',
   performance: {
     //   maxEntrypointSize: 400000,
       maxAssetSize: 400000,
