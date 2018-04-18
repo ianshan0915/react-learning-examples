@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -7,12 +8,12 @@ class App extends Component {
     };
     this.handleClick = this.handleClick.bind(this);
   }
-handleClick() {
+  handleClick() {
     console.log('From handleClick()', this);
     this.setState({numOfClicks: this.state.numOfClicks + 1});
   }
 
-render() {
+  render() {
     console.log('From render()', this);
     const { name } = this.props
     return (
