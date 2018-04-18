@@ -20,5 +20,9 @@
   "bugs": {
     "url": "https://github.com/ianshan0915/react-learning-examples/issues"
   },
-  "homepage": "https://github.com/ianshan0915/react-learning-examples#readme"
+  "homepage": "https://github.com/ianshan0915/react-learning-examples#readme",
+  "dependencies": {
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2"
+  }
 }
