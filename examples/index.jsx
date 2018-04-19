@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 // main app
-import App from './example1-bind-this/App';
+import App from './example2-states/App';
 App.defaultProps = {
     name: 'Ian Shen'
 };
