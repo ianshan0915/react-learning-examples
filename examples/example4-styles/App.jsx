@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
 import { withStyles } from 'material-ui/styles';
-import TextField from 'material-ui/TextField';
-import { FormControl } from 'material-ui/Form';
-import Button from 'material-ui/Button';
-import { Grid } from 'material-ui';
+import { Paper, Button, FormControl, TextField } from 'material-ui';
 
 const styles = theme => ({
-    // button: {
-    //   margin: theme.spacing.unit,
-    // },
     textField: {
         marginLeft: theme.spacing.unit,
         marginRight: theme.spacing.unit,
-        // width: 200,
-      },    
+    },
+    paper: {
+        height: 160,
+        width: 300,
+        margin: 'auto',
+    },
+    button: {
+        marginTop: theme.spacing.unit*2,
+    },
   });
 
 class App extends Component {
@@ -33,17 +34,15 @@ class App extends Component {
             username: 'Username',
             passwd: 'Password'
         };
+        const { classes } = this.props;
         return(
-            <Grid container justify='center' alignItems='center'>
+            <Paper className={classes.paper} >
                 <FormControl onSubmit={this.handleSubmit} >
                     <TextField label={props.username} />
                     <TextField label={props.passwd} type="password" />
-                    <Grid container direction='row'>
-                        <Button>Login </Button>
-                        <Button>Forget Password </Button>
-                    </Grid>
+                    <Button variant="raised" color="primary" className={classes.button}>Login </Button>
                 </FormControl>
-            </Grid>
+            </Paper>
         )
     }
 }
