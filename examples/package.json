@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/ianshan0915/react-learning-examples#readme",
   "dependencies": {
+    "@material-ui/icons": "^1.0.0-beta.42",
     "antd": "^3.4.1",
     "babel-plugin-import": "^1.7.0",
     "material-ui": "^1.0.0-beta.42",
