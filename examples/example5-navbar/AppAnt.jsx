@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Layout, Menu, Breadcrumb, Icon, Button, Popover } from "antd";
+import { Layout, Menu, Breadcrumb, Icon, Button, Popover, List } from "antd";
 import './AppAnt.css';
 
 const { Header, Footer, Sider, Content } = Layout;
@@ -13,7 +13,9 @@ function UserMngt (props) {
     ];
     const menulist = (
         userItems.map((item) => 
-            <li key={item.id} onClick={item.action}><span>{item.name}</span></li>
+            <List.Item key={item.id} onClick={item.action}>
+                <span>{item.name}</span>
+            </List.Item>
         )
     );
     return(
