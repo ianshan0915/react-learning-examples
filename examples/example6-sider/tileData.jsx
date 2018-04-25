@@ -20,28 +20,26 @@ const listItems2 = [
   {id:3, name:'Spam', icon:<ReportIcon />},
 ];
 
-export const mailFolderListItems = (
-  <div>
+function AssembList(props) {
+  const {listItems} = props;
+  return(
+    <div>
     {
-      listItems1.map((item) => 
+      listItems.map((item) => 
         <ListItem key={item.id} button>
           <ListItemIcon>{item.icon}</ListItemIcon>
           <ListItemText primary={item.name} />
         </ListItem>
       )
     }
-  </div>
+  </div>    
+  );
+}
+
+export const mailFolderListItems = (
+  <AssembList listItems={listItems1}></AssembList>
 );
 
 export const otherMailFolderListItems = (
-  <div>
-    {
-      listItems2.map((item) => 
-        <ListItem key={item.id} button>
-          <ListItemIcon>{item.icon}</ListItemIcon>
-          <ListItemText primary={item.name} />
-        </ListItem>
-      )
-    }
-  </div>
+  <AssembList listItems={listItems2}></AssembList>
 );

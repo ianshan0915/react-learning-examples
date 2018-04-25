@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 // main app
 // import App from './example2-states/App';
-import App from './example6-sider/App';
+import App from './example5-navbar/App';
 App.defaultProps = {
     name: 'Ian Shen'
 };
