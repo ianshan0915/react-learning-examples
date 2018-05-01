@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MapGL from "react-map-gl";
 import DeckGLOverlay from './DeckglOverlay';
-import TestPanel from "./TestPanel";
+import SiderBar from "./SiderBar";
 import './App.css';
 
 const MAPBOX_TOKEN = 'pk.eyJ1IjoiaWFuc2hlbiIsImEiOiJjamZucWMydXcwOThqMzNvOWtobnVtanQ3In0.SmBxq_Zue3IYNVAelutVDg';
@@ -33,7 +33,7 @@ const DATA_URL =
     
     _resize = () => {
         this._onViewportChange({
-            width: window.innerWidth,
+            width: window.innerWidth-300,
             height: window.innerHeight
         });
     };
@@ -47,19 +47,23 @@ const DATA_URL =
         const {viewport, data} = this.state;
         
         return (
-            <MapGL
-                {...viewport}
-                onViewportChange={this._onViewportChange}
-                mapboxApiAccessToken={MAPBOX_TOKEN} >
-                <DeckGLOverlay
-                    viewport={viewport}
-                    data={data}
-                    maleColor={MALE_COLOR}
-                    femaleColor={FEMALE_COLOR}
-                    radius={30}
-                />                
-                <TestPanel />
-            </MapGL>
+            <div>
+                <div className="map">
+                    <MapGL
+                        {...viewport}
+                        onViewportChange={this._onViewportChange}
+                        mapboxApiAccessToken={MAPBOX_TOKEN} >
+                        <DeckGLOverlay
+                            viewport={viewport}
+                            data={data}
+                            maleColor={MALE_COLOR}
+                            femaleColor={FEMALE_COLOR}
+                            radius={30}
+                        />
+                    </MapGL>
+                </div>
+                <SiderBar />
+            </div>
         );
     }
 }
