@@ -5,30 +5,49 @@ import SiderBar from "./SiderBar";
 import './App.css';
 
 const MAPBOX_TOKEN = 'pk.eyJ1IjoiaWFuc2hlbiIsImEiOiJjamZucWMydXcwOThqMzNvOWtobnVtanQ3In0.SmBxq_Zue3IYNVAelutVDg';
-const MALE_COLOR = [0, 128, 255];
-const FEMALE_COLOR = [255, 0, 128];
+// const MALE_COLOR = [0, 128, 255];
+// const FEMALE_COLOR = [255, 0, 128];
+const COLORS = [
+    [0, 255, 0],
+    [200, 67, 20],
+    [255, 0, 0],
+];
 const DATA_URL =
-  'https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/scatterplot/manhattan.json';
+  'http://35.234.93.185:8080/stations';
 
-  class App extends Component {
-      constructor(props) {
-          super(props);
-          this.state = {
-              viewport: {
-                  ...DeckGLOverlay.defaultViewport,
-                  width: 0,
-                  height: 0
-              },
-              data: null
-          };
+class App extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            viewport: {
+                ...DeckGLOverlay.defaultViewport,
+                width: 0,
+                height: 0
+            },
+            datMap: null,
+            datPanel: null
+        };
           
-          fetch(DATA_URL)
-            .then(resp => resp.json())
-            .then(data => this.setState({data}))
+        fetch(DATA_URL)
+        .then(resp => resp.json())
+        .then(data => {
+            const datMap=data.map(d=> [d.LGTD, d.LTTD, COLORS[d.num_label]]);
+            const sortedDat = data.sort((a,b) => b.num_label - a.num_label);
+            this.setState({datMap: datMap, datPanel: sortedDat});
+        });
       }
     componentDidMount() {
         window.addEventListener('resize', this._resize);
         this._resize();
+        setInterval(() => {
+            fetch(DATA_URL)
+            .then(resp => resp.json())
+            .then(data => {
+                const datMap=data.map(d=> [d.LGTD, d.LTTD, COLORS[d.num_label]]);
+                const sortedDat = data.sort((a,b) => b.num_label - a.num_label);
+                this.setState({datMap: datMap, datPanel: sortedDat});
+            });
+        }, 60000)
     }
     
     _resize = () => {
@@ -44,8 +63,8 @@ const DATA_URL =
     };
 
     render() {
-        const {viewport, data} = this.state;
-        
+        const {viewport, datMap, datPanel} = this.state;
+
         return (
             <div>
                 <div className="map">
@@ -55,14 +74,14 @@ const DATA_URL =
                         mapboxApiAccessToken={MAPBOX_TOKEN} >
                         <DeckGLOverlay
                             viewport={viewport}
-                            data={data}
-                            maleColor={MALE_COLOR}
-                            femaleColor={FEMALE_COLOR}
+                            data={datMap}
+                            // maleColor={MALE_COLOR}
+                            // femaleColor={FEMALE_COLOR}
                             radius={30}
                         />
                     </MapGL>
                 </div>
-                <SiderBar />
+                <SiderBar stations={datPanel}/>
             </div>
         );
     }
